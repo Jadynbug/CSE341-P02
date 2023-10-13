@@ -1,0 +1,194 @@
+[{
+    "character-id": "1",
+    "name": "Silvered Bloom of the Shadowed Valley",
+    "alias": "Shadow",
+    "gender": "Female",
+    "class": [{
+        "name": "Rouge",
+        "level": "4"
+    }, {
+        "name": "Warlock",
+        "level": "6"
+    }],
+    "race": "Tabaxi",
+    "alignment": "Chaotic Nuetral",
+    "ability-scores": [
+        {"strength": "12", "modifier": "1"},
+        {"dextarity": "20", "modifier": "5"},
+        {"constitution": "12", "modifier": "1"},
+        {"intelligence": "12", "modifier": "1"},
+        {"wisdom": "12", "modifier": "1"},
+        {"charisma": "20", "modifier": "5"}
+    ],
+    "armor-class": "19",
+    "initiative": "5",
+    "hit-points": "77",
+    "skills": {
+        "acrobatics": "9",
+        "deception": "9",
+        "perception": "5",
+        "persuasion": "9",
+        "slight-of-hand": "9",
+        "stealth": "14"
+    },
+    "saving-throws": {
+        "dextarity": "10",
+        "intelligence": "7",
+        "charisma": "2"
+    },
+    "languages": "Common"
+},{
+    "character-id": "2",
+    "name": "Star of the Valley Beyond the Mountain Crest",
+    "alias": "Crest",
+    "gender": "Female",
+    "class": {
+        "name": "Rouge",
+        "level": "14"
+    },
+    "race": "Tabaxi",
+    "alignment": "Chaotic Nuetral",
+    "ability-scores": [
+        {"strength": "8", "modifier": "-1"},
+        {"dextarity": "20", "modifier": "5"},
+        {"constitution": "12", "modifier": "1"},
+        {"intelligence": "14", "modifier": "2"},
+        {"wisdom": "12", "modifier": "1"},
+        {"charisma": "14", "modifier": "2"}
+    ],
+    "armor-class": "14",
+    "initiative": "3",
+    "hit-points": "78",
+    "skills": {
+        "acrobatics": "10",
+        "athletics": "4",
+        "deception": "12",
+        "insight": "6",
+        "intimidation": "2",
+        "nature": "7",
+        "perception": "11",
+        "performance": "7",
+        "persuasion": "7",
+        "slight-of-hand": "15",
+        "stealth": "15",
+        "survival": "6"
+    },
+    "saving-throws": {
+        "dextarity": "10",
+        "intelligence": "7",
+        "charisma": "2"
+    },
+    "languages": "Common, Theive's cant, Draconic"
+},{
+    "character-id": "3",
+    "name": "Atia Runeborn",
+    "alias": "Atia",
+    "gender":"Female",
+    "class": {
+        "name": "Warlock",
+        "level": "3"
+    },
+    "race": "Human",
+    "alignment": "Chaotic Nuetral",
+    "ability-scores": [
+        {"strength": "11", "modifier": "0"},
+        {"dextarity": "15", "modifier": "2"},
+        {"constitution": "15", "modifier": "2"},
+        {"intelligence": "11", "modifier": "0"},
+        {"wisdom": "14", "modifier": "2"},
+        {"charisma": "16", "modifier": "3"}
+    ],
+    "armor-class": "16",
+    "initiative": "2",
+    "hit-points": "28",
+    "skills": {
+        "arcana": "2",
+        "history": "2",
+        "perception": "4",
+        "persuasion": "3",
+        "survival": "4"
+    },
+    "saving-throws": {
+        "wisdom": "2",
+        "charisma": "3"
+    },
+    "languages": "Common"
+},{
+    "character-id": "4",
+    "name": "Nyx Darkeye",
+    "alias": "Nyx",
+    "gender":"Female",
+    "class": {
+        "name": "Bard",
+        "level": "7"
+    },
+    "race": "Tifling",
+    "alignment": "Chaotic Nuetral",
+    "ability-scores": [
+        {"strength": "10", "modifier": "0"},
+        {"dextarity": "16", "modifier": "3"},
+        {"constitution": "15", "modifier": "2"},
+        {"intelligence": "13", "modifier": "1"},
+        {"wisdom": "11", "modifier": "0"},
+        {"charisma": "16", "modifier": "3"}
+    ],
+    "armor-class": "15",
+    "initiative": "3",
+    "hit-points": "63",
+    "skills": {
+        "acrobatics": "6",
+        "arcana": "4",
+        "deception": "9",
+        "history": "2",
+        "insight": "3",
+        "intimidation": "3",
+        "investigation": "2",
+        "nature": "2",
+        "perfomance": "9",
+        "persuasion": "6",
+        "slight-of-hand": "4",
+        "stealth": "6"
+    },
+    "saving-throws": {
+        "dextarity": "6",
+        "contitution": "2",
+        "charisma": "6"
+    },
+    "languages": "Common, Infernal, Abyssal"
+},{
+    "character-id": "5",
+    "name": "Sorak",
+    "alias": "Sorak",
+    "gender": "Male",
+    "class": {
+        "name": "Barbarian",
+        "level": "10"
+    },
+    "race": "Dragonborn",
+    "alignment": "Nuetral",
+    "ability-scores": [
+        {"strength": "18", "modifier": "4"},
+        {"dextarity": "13", "modifier": "1"},
+        {"constitution": "15", "modifier": "2"},
+        {"intelligence": "8", "modifier": "-1"},
+        {"wisdom": "12", "modifier": "1"},
+        {"charisma": "11", "modifier": "0"}
+    ],
+    "armor-class": "13",
+    "initiative": "6",
+    "hit-points": "97",
+    "skills": {
+        "arcana": "-1",
+        "athletics": "8",
+        "intimidation": "4",
+        "investigation": "-1",
+        "perception": "5",
+        "persuasion": "9",
+        "survival": "5"
+    },
+    "saving-throws": {
+        "strength": "8",
+        "constitution": "6"
+    },
+    "languages": "Common, Draconic"
+}]
