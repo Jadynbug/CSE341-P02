@@ -1,43 +1,55 @@
 //to get all characters
 GET localhost:3000/characters
 
+//get by id
+GET localhost:3000/characters/65271e0011c0de09f466db08
+
+
+//post new character
 POST localhost:3000/characters
-body [{
-        "character-id": "6",
-    "name": "Star of the Mountains Wreathed in Morning",
-    "alias": "Star",
-    "gender": "Female",
-    "class": {
-        "name": "Rouge",
-        "level": "2"
-    },
-    "race": "Tabaxi",
-    "alignment": "Chaotic Nuetral",
-    "ability-scores": [
-        {"strength": "13", "modifier": "1"},
-        {"dextarity": "17", "modifier": "3"},
-        {"constitution": "14", "modifier": "2"},
-        {"intelligence": "13", "modifier": "1"},
-        {"wisdom": "13", "modifier": "1"},
-        {"charisma": "15", "modifier": "2"}
-    ],
-    "armor-class": "15",
-    "initiative": "3",
-    "hit-points": "17",
-    "skills": {
-        "acrobatics": "5",
-        "deception": "4",
-        "intimidation": "4",
-        "perception": "3",
-        "performance": "4"
-        "persuasion": "4",
-        "slight-of-hand": "7",
-        "stealth": "7"
-    },
-    "saving-throws": {
-        "dextarity": "5",
-        "intelligence": "3",
-        "charisma": "2"
-    },
-    "languages": "common"
-}]
+    body [{
+            "character-id": "6",
+        "name": "Star of the Mountains Wreathed in Morning",
+        "alias": "Star",
+        "gender": "Female",
+        "class": {
+            "name": "Rouge",
+            "level": "2"
+        },
+        "race": "Tabaxi",
+        "alignment": "Chaotic Nuetral",
+        "ability-scores": [
+            {"strength": "13", "modifier": "1"},
+            {"dextarity": "17", "modifier": "3"},
+            {"constitution": "14", "modifier": "2"},
+            {"intelligence": "13", "modifier": "1"},
+            {"wisdom": "13", "modifier": "1"},
+            {"charisma": "15", "modifier": "2"}
+        ],
+        "armor-class": "15",
+        "initiative": "3",
+        "hit-points": "17",
+        "skills": {
+            "acrobatics": "5",
+            "deception": "4",
+            "intimidation": "4",
+            "perception": "3",
+            "performance": "4"
+            "persuasion": "4",
+            "slight-of-hand": "7",
+            "stealth": "7"
+        },
+        "saving-throws": {
+            "dextarity": "5",
+            "intelligence": "3",
+            "charisma": "2"
+        },
+        "languages": "common"
+    }]
+
+//update character by id
+PUT localhost:3000/characters/65271e12615976da525887ba
+
+//delete by id
+DELETE localhost:3000/characters/65271e12615976da525887ba
+
