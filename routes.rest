@@ -7,7 +7,7 @@ GET localhost:3000/characters/65271e0011c0de09f466db08
 
 //post new character
 POST localhost:3000/characters
-    body [{
+    body {
             "character-id": "6",
         "name": "Star of the Mountains Wreathed in Morning",
         "alias": "Star",
@@ -29,23 +29,23 @@ POST localhost:3000/characters
         "armor-class": "15",
         "initiative": "3",
         "hit-points": "17",
-        "skills": {
+        "skills": [{
             "acrobatics": "5",
             "deception": "4",
             "intimidation": "4",
             "perception": "3",
-            "performance": "4"
+            "performance": "4",
             "persuasion": "4",
             "slight-of-hand": "7",
             "stealth": "7"
-        },
-        "saving-throws": {
+        }],
+        "saving-throws": [{
             "dextarity": "5",
             "intelligence": "3",
             "charisma": "2"
-        },
+        }],
         "languages": "common"
-    }]
+    }
 
 //update character by id
 PUT localhost:3000/characters/65271e12615976da525887ba
@@ -53,3 +53,22 @@ PUT localhost:3000/characters/65271e12615976da525887ba
 //delete by id
 DELETE localhost:3000/characters/65271e12615976da525887ba
 
+//get weapons
+GET 
+
+//get weapon by id
+GET 
+
+//post new weapon
+POST  
+    body {
+        "name": "Hand Axe",
+        "attack-bonus":"Strength Modifier",
+        "damage-type":"Slashing",
+        "damage-amount": "1d6"
+    }
+//update weapon by id
+PUT 
+
+//delete weapon
+DELETE 

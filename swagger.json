@@ -13,6 +13,122 @@
   "paths": {
     "/characters": {
       "get": {
+        "description": "Get all characters",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "Post new character",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/characters/{_id}": {
+      "get": {
+        "description": "Get character by _id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a character by _id",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "character-id": {
+                  "example": "4"
+                },
+                "name": {
+                  "example": "James the Great"
+                },
+                "alias": {
+                  "example": "James"
+                },
+                "gender": {
+                  "example": "Male"
+                },
+                "class": {
+                  
+                },
+                "race": {
+                  "example": "Human"
+                },
+                "alignment": {
+                  "example": "Nuetral Good"
+                },
+                "ability-scores": {
+
+                },
+                "initiative": {
+                  "example": "2"
+                },
+                "skills": {
+                  "example": "any"
+                },
+                "languages": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/weapons": {
+      "get": {
         "description": "",
         "produces": [
           "application/json"
@@ -20,25 +136,33 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
       "post": {
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
           }
         }
       }
     },
-    "/characters/{_id}": {
+    "/weapons/{_id}": {
       "get": {
         "description": "",
         "produces": [
@@ -55,9 +179,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -78,30 +199,6 @@
               "properties": {
                 "name": {
                   "example": "any"
-                },
-                "alias": {
-                  "example": "any"
-                },
-                "gender": {
-                  "example": "any"
-                },
-                "class": {
-                  "example": "any"
-                },
-                "race": {
-                  "example": "any"
-                },
-                "alignment": {
-                  "example": "any"
-                },
-                "initiative": {
-                  "example": "any"
-                },
-                "skills": {
-                  "example": "any"
-                },
-                "languages": {
-                  "example": "any"
                 }
               }
             }
@@ -110,9 +207,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       },
@@ -129,9 +223,6 @@
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }

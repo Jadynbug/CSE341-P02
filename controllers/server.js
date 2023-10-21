@@ -1,12 +1,13 @@
+require('express-async-errors');
 const mongodb = require('../db/connect');
 const MongoClient = require('mongodb').MongoClient;
 const ObjectId = require('mongodb').ObjectId;
+const err = require('../error');
 
-const postError = "Missing field in post request";
-const err = "Problem in controller";
 
-const getData = async(req, res, next) => {
-    console.log("in controllers");
+
+const getCharacter = async(req, res, next) => {
+    console.log("in get character");
     try {
         //console.log(req.query);
         let query = {};
@@ -15,14 +16,12 @@ const getData = async(req, res, next) => {
         }
         // console.log(query);
         const result = await mongodb.getDb().db('P02').collection('characters').find(query);
-        console.log("got db");
         result.toArray().then((lists) => {
             res.setHeader('Content-Type', 'application/json');
-            console.log("header set");
             res.status(200).json(lists);
         });
-    } catch {
-        res.status(500).json(err);
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
     }
 };
 
@@ -30,19 +29,18 @@ const getCharacterId = async (req, res, next) => {
     console.log('in get character by id');
     try {
         if(!req.params['_id']) {
-            console.log('lack of _id error in get character by id');
-            res.send(err);
+            throw new err.lackOfID('lack of _id error in get character by id');
         };
         let query = {'_id': new ObjectId(req.params['_id'])};
 
-        console.log(query);
+        // console.log(query);
         const result = await mongodb.getDb().db('P02').collection('characters').find(query);
         result.toArray().then((lists) => {
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(lists);
         });
-    } catch {
-        res.status(500).json(err);
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
     };
 };
 
@@ -50,8 +48,7 @@ const postCharacter = async(req, res, next) => {
     console.log("in post character");
     try {
         if (!req.body['character-id'] || !req.body['name'] || !req.body['alias'] || !req.body['gender'] || !req.body['class'] || !req.body['race'] || !req.body['alignment'] || !req.body['ability-scores'] || !req.body['armor-class'] || !req.body['initiative'] || !req.body['hit-points'] || !req.body['skills'] || !req.body['saving-throws'] || !req.body['languages']) {
-            console.log("There are things missing!!");
-            res.status(400).json(postError);
+            throw new err.missingFields("There are required fields missing in post characters");
         };
 
         let newCharacter = {};
@@ -78,22 +75,21 @@ const postCharacter = async(req, res, next) => {
         let result = await collection.insertOne(newCharacter);
         res.send(result).status(201);
         
-    } catch {
-        res.status(400).json(postError);
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
     };
 
-}
+};
 
-const putChracter = async (req, res, next) => {
+const putCharacter = async (req, res, next) => {
     console.log('in put character');
     try {
         if(!req.params['_id']) {
-            console.log('lack of id error in put character');
-            res.send(error);
+            throw new err.lackOfID('lack of id error in put character');
         }
         let update = {};
         let id = {"_id": new ObjectId(req.params['_id'])};
-        console.log(id);
+        // console.log(id);
 
         if(req.body['character-id']) {update['character-id'] = req.body['character-id']};
         if(req.body.name) {update.name = req.body['name']};
@@ -111,37 +107,150 @@ const putChracter = async (req, res, next) => {
         if(req.body.languages) { update.languages = req.body['languages']};
 
         let newValues = {$set: update};
-        console.log(newValues);
-        let result = await mongodb.getDb().db('CSE341').collection("contacts").updateOne(id, newValues);
+        // console.log(newValues);
+        let result = await mongodb.getDb().db('P02').collection("characters").updateOne(id, newValues);
 
         res.send(result).status(204);
-    } catch {
-        res.status(500).json(err);
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
     };
 };
 
 const deleteCharacter = async (req, res, next) => {
-    console.log('in delete characters')
+    console.log('in delete characters');
     try {
         if(!req.params['_id']) {
-            console.log('lack of _id error in delete character');
-            res.send(err);
-        }
+            throw new err.lackOfID('lack of _id error in delete character');
+        };
         let query = {'_id': new ObjectId(req.params['_id'])};
-        console.log(query);
-        let result = await mongodb.getDb().db('CSE341-P02').collection("characters").deleteOne(query);
+        // console.log(query);
+        let result = await mongodb.getDb().db('P02').collection("characters").deleteOne(query);
 
         res.send(result).status(200);
-    } catch {
-        res.status(500).json(err);
+
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
+    };
+};
+
+const getWeapons = async(req, res, next) => {
+    console.log("in get weapons");
+    try {
+        //console.log(req.query);
+        let query = {};
+        if(req.query) {
+            query = req.query;
+        };
+        // console.log(query);
+        const result = await mongodb.getDb().db('P02').collection('weapons').find(query);
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
+    };
+};
+
+const getWeaponsById = async(req, res, next) => {
+    console.log("in get weapons by id");
+    try {
+        //console.log(req.query);
+        if(!req.params['_id']) {
+            throw new err.lackOfID("lack of id erro in get weapons by id");
+        };
+        let query = {'_id': new ObjectId(req.params['_id'])};
+        // console.log(query);
+        const result = await mongodb.getDb().db('P02').collection('weapons').find(query);
+        result.toArray().then((lists) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.status(200).json(lists);
+        });
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
+    };
+};
+
+const postWeapon = async(req, res, next) => {
+    console.log("in post weapon");
+    try {
+        // console.log(req.body);
+        if (!req.body.name || !req.body['attack-bonus'] || !req.body['damage-type'] || !req.body['damage-amount']) {
+            throw new err.missingFields("There are required fields missing in post weapons");
+        };
+
+        let newWeapon = {};
+
+        newWeapon.name = req.body['name'];
+        newWeapon['attack-bonus'] = req.body['attack-bonus'];
+        newWeapon['damage-type'] = req.body['damage-type'];
+        newWeapon['damage-amount'] = req.body['damage-amount'];
+
+
+        console.log(newWeapon);
+
+        let collection = await mongodb.getDb().db('P02').collection("weapons");
+        
+        let result = await collection.insertOne(newWeapon);
+        res.send(result).status(201);
+        
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
+    };
+};
+
+const putWeapon = async (req, res, next) => {
+    console.log('in put weapon');
+    try {
+        if(!req.params['_id']) {
+            throw new err.lackOfID('lack of id error in put character');
+        };
+        let update = {};
+        let id = {"_id": new ObjectId(req.params['_id'])};
+        // console.log(id);
+
+        if(req.body.name) {update.name = req.body['name']};
+        if(req.body['attack-bonus']) { update['attack-bonus'] = req.body['attack-bonus']};
+        if(req.body['damage-type']) { update['damage-type'] = req.body['damage-type']};
+        if(req.body['damage-amount']) { update['damage-amount'] = req.body['damage-amount']};
+
+        let newValues = {$set: update};
+        // console.log(newValues);
+        let result = await mongodb.getDb().db('P02').collection("weapons").updateOne(id, newValues);
+
+        res.send(result).status(204);
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
+    };
+};
+
+const deleteWeapon = async (req, res, next) => {
+    console.log('in delete weapon')
+    try {
+        if(!req.params['_id']) {
+            throw new err.lackOfID('lack of _id error in delete weapon');
+        }
+        let query = {'_id': new ObjectId(req.params['_id'])};
+        // console.log(query);
+        let result = await mongodb.getDb().db('P02').collection("weapons").deleteOne(query);
+
+        res.send(result).status(200);
+
+    } catch(e) {
+        res.status(e.statusCode).json(e.message);
     }
 }
 
 
 module.exports = {
-    getData,
+    getCharacter,
     getCharacterId,
     postCharacter,
-    putChracter,
-    deleteCharacter
+    putCharacter,
+    deleteCharacter,
+    getWeapons,
+    getWeaponsById,
+    postWeapon,
+    putWeapon,
+    deleteWeapon
 };

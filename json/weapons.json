@@ -1,0 +1,61 @@
+[{
+    "name": "rapier",
+    "attack-bonus": "Dextarity Modifiier",
+    "damage-type": "Piercing",
+    "damage-amount": "1d8"
+},{
+    "name": "Psi Blades",
+    "attack-bonus": "Intelligence Modifier",
+    "damage-type": "Psycic",
+    "damage-amount": "1d6 + 4"
+},{
+    "name": "Claws",
+    "attack-bonus": "Strength Modifier",
+    "damage-type": "Slashing",
+    "damage-amount": "1d4"
+},{
+    "name": "Fangs",
+    "attack-bonus": "Strength Modifier",
+    "damage-type":"Piercing",
+    "damage-amount":"1d4"
+},{
+    "name": "Short Sword",
+    "attack-bonus": "Strength Modifier",
+    "damage-type": "Slashing",
+    "damage-amount": "1d6 + 2"
+},{
+    "name": "Dagger",
+    "attack-bonus": "Dextarity Modifier",
+    "damage-type": "Piercing",
+    "damage-amount": "1d4"
+},{
+    "name": "Chakrams",
+    "attack-bonus":"Dextarity Modifier",
+    "damage-type":"Slashing",
+    "damage-amount": "1d10"
+},{
+    "name": "Light Crossbow",
+    "attack-bonus": "Dextarity Modifier",
+    "damage-type": "Piercing",
+    "damage-amount": "1d8"
+},{
+    "name": "Simatar",
+    "attack-bonus":"Strength Modifier",
+    "damage-type": "Slashing",
+    "damage-amount": "1d6"
+},{
+    "name": "Halberd",
+    "attack-bonus": "Strength Modifier",
+    "damage-type":"Slashing",
+    "damage-amount":"1d10"
+},{
+    "name": "Long Sword",
+    "attack-bonus": "Strength Modifier",
+    "damage-type": "Slashing",
+    "damage-amount": "1d8"
+},{
+    "name": "Javelin",
+    "attack-bonus": "Strength Modifier",
+    "damage-type": "Piercing",
+    "damage-amount": "1d6"
+}]
