@@ -44,7 +44,7 @@ module.exports = (passport) => {
     passport.serializeUser(function(user, next) {
     let id = user._id;
     user_cache[id] = user;
-    next(null, id);
+    next(null, id); 
     });
 
     passport.deserializeUser(function(id, next) {

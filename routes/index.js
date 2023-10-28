@@ -10,7 +10,7 @@ routes.get('/', ensureGuest, (req, res) => {
     })
 });
 
-//dashboard
+//dashboard  
 routes.get('/dashboard', ensureAuth, (req, res) => {
     console.log('in dashboard route');
     res.render('dashboard'); 
