@@ -1,6 +1,21 @@
 const routes = require('express').Router();
 const Controller = require('../controllers/server');
 const validation = require('../middleware/validate');
+const {ensureAuth, ensureGuest} = require('../middleware/auth');
+
+//landing page
+routes.get('/', ensureGuest, (req, res) => {
+    res.render('login', {
+        layout: 'login',
+    })
+});
+
+//dashboard
+routes.get('/dashboard', ensureAuth, (req, res) => {
+    console.log('in dashboard route');
+    res.render('dashboard'); 
+})
+
 
 routes.use('/', require('./swagger'));
 
