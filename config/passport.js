@@ -39,11 +39,15 @@ module.exports = (passport) => {
         )
     );
 
-    passport.serializeUser((user, done) => {
-        done(null, user._id);
+    let user_cache = {};
+
+    passport.serializeUser(function(user, next) {
+    let id = user._id;
+    user_cache[id] = user;
+    next(null, id);
     });
 
-    passport.deserializeUser((id, done) => {
-        User.findById(id);
+    passport.deserializeUser(function(id, next) {
+    next(null, user_cache[id]);
     });
 };
