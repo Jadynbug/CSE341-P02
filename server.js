@@ -119,6 +119,12 @@ app.use((req, res, next) => {
 //static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Orgin', 'https://cse341-p02-76pk.onrender.com');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+})
+
 //routes
 app.use('/', require('./routes/index'));
 app.use('/auth', require('./routes/auth'));
