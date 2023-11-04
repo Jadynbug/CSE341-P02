@@ -14,6 +14,8 @@ const mongodb = require('./db/connect');
 const { dbNotInit } = require('./error');
 const { configDotenv } = require('dotenv');
 const connectDB = require('./config/db');
+const cors = require('cors');
+
 
 // connectDB();
 
@@ -47,6 +49,9 @@ const errorHandling = (err, req, res, next) => {
 
 //loging
 app.use(morgan('dev'));
+
+//set up cors
+app.use(cors());
 
 //body parser
 app.use(bodyParser.json());
