@@ -5,7 +5,7 @@
     "description": "D&D API",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://cse341-p02-76pk.onrender.com/",
   "basePath": "/",
   "schemes": [
     "http"
