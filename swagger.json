@@ -10,9 +10,68 @@
   "schemes": [
     "http"
   ],
+  "securityDefinitions": {
+    "localhostCharactersSecurity": {
+      "type": "oauth2",
+      "flow": "authentication",
+      "authorixationUrl": "https:localhost:3000/auth/google/",
+      "scopes": {
+        "read": "characters",
+        "write": "characters"
+      }
+    },
+    "localhostWeaponsSecurity": {
+      "type": "oauth2",
+      "flow": "authentication",
+      "authorixationUrl": "https:localhost:3000/auth/google/",
+      "scopes": {
+        "read": "weapons",
+        "write": "weapons"
+      }
+    },
+    "renderCharactersSecurity": {
+      "type": "oauth2",
+      "flow": "authentication",
+      "authorixationUrl": "http://cse341-p02-76pk.onrender.com/auth/google",
+      "scopes": {
+        "read": "characters",
+        "write": "characters"
+      }
+    },
+    "renderWeaponsSecurity": {
+      "type": "oauth2",
+      "flow": "authentication",
+      "authorixationUrl": "http://cse341-p02-76pk.onrender.com/auth/google",
+      "scopes": {
+        "read": "weapons",
+        "write": "weapons"
+      }
+    }
+  },
   "paths": {
+    "/": {
+      "get": {
+        "description": "Show the login view",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/dashboard": {
+      "get": {
+        "description": "Show the dashboard view",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/characters": {
       "get": {
+        "tag": "characters",
         "description": "Get all characters",
         "produces": [
           "application/json"
@@ -21,20 +80,79 @@
           "200": {
             "description": "OK"
           }
+        },
+        "security": {
+          "localhostCharactersSecurity": {
+              "read": "characters"
+          },
+          "renderCharactersSecurity": {
+            "read":"characters"
+          }
         }
       },
       "post": {
+        "tag": "characters",
         "description": "Post new character",
+        "parameters": [
+          {
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "example": "any"
+              },
+              "alias": {
+                "example": "any"
+              },
+              "gender": {
+                "example": "any"
+              },
+              "class": {
+                "example": "any"
+              },
+              "race": {
+                "example": "any"
+              },
+              "alignment": {
+                "example": "any"
+              },
+              "initiative": {
+                "example": "any"
+              },
+              "skills": {
+                "example": "any"
+              },
+              "languages": {
+                "example": "any"
+              }
+            }
+          }
+        }
+      ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        },
+        "security": {
+          "localhostCharactersSecurity": {
+              "write": "characters"
+          },
+          "renderCharactersSecurity": {
+            "write":"characters"
           }
         }
       }
     },
     "/characters/{_id}": {
       "get": {
-        "description": "Get character by _id",
+        "tag": "characters",
+        "description": "Get character by ID",
         "produces": [
           "application/json"
         ],
@@ -50,10 +168,19 @@
           "200": {
             "description": "OK"
           }
+        },
+        "security": {
+          "localhostCharactersSecurity": {
+              "read": "characters"
+          },
+          "renderCharactersSecurity": {
+            "read":"characters"
+          }
         }
       },
       "put": {
-        "description": "Update a character by _id",
+        "tag": "characters",
+        "description": "Update character by ID",
         "parameters": [
           {
             "name": "_id",
@@ -67,32 +194,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "character-id": {
-                  "example": "4"
-                },
                 "name": {
-                  "example": "James the Great"
+                  "example": "any"
                 },
                 "alias": {
-                  "example": "James"
+                  "example": "any"
                 },
                 "gender": {
-                  "example": "Male"
+                  "example": "any"
                 },
                 "class": {
-                  
+                  "example": "any"
                 },
                 "race": {
-                  "example": "Human"
+                  "example": "any"
                 },
                 "alignment": {
-                  "example": "Nuetral Good"
-                },
-                "ability-scores": {
-
+                  "example": "any"
                 },
                 "initiative": {
-                  "example": "2"
+                  "example": "any"
                 },
                 "skills": {
                   "example": "any"
@@ -107,11 +228,23 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        },
+        "security": {
+          "localhostCharactersSecurity": {
+              "write": "characters"
+          },
+          "renderCharactersSecurity": {
+            "write":"characters"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tag": "characters",
+        "description": "Delete character by ID",
         "parameters": [
           {
             "name": "_id",
@@ -124,12 +257,21 @@
           "200": {
             "description": "OK"
           }
+        },
+        "security": {
+          "localhostCharactersSecurity": {
+              "write": "characters"
+          },
+          "renderCharactersSecurity": {
+            "write":"characters"
+          }
         }
       }
     },
     "/weapons": {
+      "tag": "weapons",
       "get": {
-        "description": "",
+        "description": "Get weapons",
         "produces": [
           "application/json"
         ],
@@ -137,10 +279,19 @@
           "200": {
             "description": "OK"
           }
+        },
+        "security": {
+          "localhostWeaponsSecurity": {
+            "read":"weapons"
+          },
+          "renderWeaponsSecurity": {
+            "read": "weapons"
+          }
         }
       },
       "post": {
-        "description": "",
+        "tag": "weapons",
+        "description": "Post new weapon",
         "parameters": [
           {
             "name": "body",
@@ -149,7 +300,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "Axe"
+                },
+                "attack-bonus": {
+                  "example": "Stength Modifier"
+                },
+                "damage-type": {
+                  "example": "Slashing"
+                },
+                "damage-amount": {
+                  "example": "2d6"
                 }
               }
             }
@@ -158,13 +318,25 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        },
+        "security": {
+          "localhostWeaponsSecurity": {
+            "write":"weapons"
+          },
+          "renderWeaponsSecurity": {
+            "write":"weapons"
           }
         }
       }
     },
     "/weapons/{_id}": {
       "get": {
-        "description": "",
+        "tag": "weapons",
+        "description": "get weapon by ID",
         "produces": [
           "application/json"
         ],
@@ -180,10 +352,19 @@
           "200": {
             "description": "OK"
           }
+        },
+        "security": {
+          "localhostWeaponsSecurity": {
+            "read":"weapons"
+          },
+          "renderWeaponsSecurity": {
+            "read":"weapons"
+          }
         }
       },
       "put": {
-        "description": "",
+        "tag": "weapons",
+        "description": "Update weapon by ID",
         "parameters": [
           {
             "name": "_id",
@@ -199,6 +380,15 @@
               "properties": {
                 "name": {
                   "example": "any"
+                },
+                "attack-bonus": {
+                  "example": "Stength Modifier"
+                },
+                "damage-type": {
+                  "example": "Slashing"
+                },
+                "damage-amount": {
+                  "example": "2d6"
                 }
               }
             }
@@ -207,11 +397,23 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "412": {
+            "description": "Precondition Failed"
+          }
+        },
+        "security": {
+          "localhostWeaponsSecurity": {
+            "write":"weapons"
+          },
+          "renderWeaponsSecurity": {
+            "write":"weapons"
           }
         }
       },
       "delete": {
-        "description": "",
+        "tag": "weapons",
+        "description": "Delete weapon by ID",
         "parameters": [
           {
             "name": "_id",
@@ -223,6 +425,14 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        },
+        "security": {
+          "localhostWeaponsSecurity": {
+            "write":"weapons"
+          },
+          "renderWeaponsSecurity": {
+            "write":"weapons"
           }
         }
       }
@@ -237,5 +447,71 @@
         }
       }
     }
+  },
+  "definitions": {
+    "characters": [{
+      "type": "object",
+      "properties": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Jared the Mighty"
+          },
+          "alias": {
+            "type": "string",
+            "example": "Jared"
+          },
+          "gender": {
+            "type": "string",
+            "example": "Male"
+          },
+          "class": {
+            "type": "string",
+            "example": "Fighter"
+          },
+          "race": {
+            "type": "string",
+            "example": "Human"
+          },
+          "alignment": {
+            "type": "string",
+            "example": "Chaotic Neutral"
+          },
+          "initiative": {
+            "type": "string",
+            "example": "2"
+          },
+          "skills": {
+            "type": "string",
+            "example": "any"
+          },
+          "languages": {
+            "type": "string",
+            "example": "English, Japanese"
+          }
+        }
+      }
+    }],
+    "weapons": [{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "any"
+        },
+        "attack-bonus": {
+          "type": "string",
+          "example": "Stength Modifier"
+        },
+        "damage-type": {
+          "type": "string",
+          "example": "Slashing"
+        },
+        "damage-amount": {
+          "type": "string",
+          "example": "2d6"
+        }
+      }
+    }]
   }
 }
