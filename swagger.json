@@ -41,7 +41,7 @@
     "renderWeaponsSecurity": {
       "type": "oauth2",
       "flow": "authentication",
-      "authorixationUrl": "http://cse341-p02-76pk.onrender.com/auth/google",
+      "authorixationUrl": "cse341-p02-76pk.onrender.com/auth/google",
       "scopes": {
         "read": "weapons",
         "write": "weapons"
