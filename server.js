@@ -50,11 +50,6 @@ app.use(morgan('dev'));
 
 //body parser
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  next();
-})
 
 //init error handling
 app.use(errorHandling);
