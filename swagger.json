@@ -5,7 +5,7 @@
     "description": "D&D API",
     "version": "1.0.0"
   },
-  "host": "https://cse341-p02-76pk.onrender.com/",
+  "host": "cse341-p02-76pk.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
@@ -41,7 +41,7 @@
     "renderWeaponsSecurity": {
       "type": "oauth2",
       "flow": "authentication",
-      "authorixationUrl": "cse341-p02-76pk.onrender.com/auth/google",
+      "authorixationUrl": "http://cse341-p02-76pk.onrender.com/auth/google",
       "scopes": {
         "read": "weapons",
         "write": "weapons"
